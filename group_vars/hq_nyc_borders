@@ -1,1 +1,98 @@
+#This file defines variables for HQ_NYC border switches, which are usually Juniper routers running JUNOS. 
 
+ansible_connection: ansible.netcommon.netconf
+ansible_network_os: junipernetworks.junos.junos
+napalm_platform: junos
+ansible_user: !vault |  ###USE YOUR VAULT GENERATED ENCRYPTION. THIS IS AN EXAMPLE ONLY.
+          $ANSIBLE_VAULT;1.1;AES256
+          85642308403270235165653464383161633663343938626231643031306563646338613362636234
+          35303038333439323362393252735430576629898298497984565561689792999859616169899879
+          63313466616165193120000505905959595295998994906094994949494949494949490490490400
+          38303963852741123859674185296385612396789456297869588623784587635786953845196894
+          8596
+ansible_password: !vault |   ###USE YOUR VAULT GENERATED ENCRYPTION. THIS IS AN EXAMPLE ONLY.
+          $ANSIBLE_VAULT;1.1;AES256
+          63353139323661663762616166333231396631306133386237333261666330653134346366366265
+          3339373930623138623933326361383137376238663765610a383530623232653336343637313638
+          34383465613065383037306266333334623565636534383662653332663462313764353831646431
+          6266343030613665380a396266373234663433663238336463663562353064393733393966636563
+          30343335386634363261343534666533396361646238386337666435376433313264
+
+primary: "hq_nycborder01"
+secondary: "hq_nycborder02"
+
+google_dns:
+  - "8.8.8.8"
+  - "8.8.4.4"
+ntp:
+  - "time.google.com"
+  - "time1.google.com"
+
+system_services_base_lines:
+  - set system services netconf ssh
+  - set system services ssh root-login allow
+  - set system services ssh protocol-version v2
+  - set system services web-management https system-generated-certificate
+  - set system services web-management https interface ge-0/0/5.0
+
+location: hq_nyc
+timezone: America/New_York
+
+vlans:
+  - { name: vlan-isp01, vlan_id: 100, l3_interface: irb.100 }
+  - { name: vlan-isp02,  vlan_id: 200, l3_interface: irb.200 }
+
+l2_access_interfaces:
+  - { name: xe-0/0/16, access: { vlan: vlan-isp01 } }
+  - { name: xe-0/0/17, access: { vlan: vlan-isp02  } }
+  - { name: xe-0/0/18, access: { vlan: vlan-isp01 } }
+  - { name: xe-0/0/19, access: { vlan: vlan-isp02  } }
+
+static_routes:
+  - destination: 0.0.0.0/0
+    next_hop: [##add_the_isp01_default_gateway_IP]
+    qualified_next_hop:
+      - { forwarding_router_address: ##add_the_isp02_default_gateway_IP, preference: 20 }
+  - destination: 10.10.0.0/16
+    next_hop: [10.10.0.1]
+
+security_zones_lines:
+  - set security policies
+  - set security zones security-zone MGMT interfaces ge-0/0/5.0 host-inbound-traffic system-services all
+  - set security zones security-zone MGMT interfaces ge-0/0/5.0 host-inbound-traffic protocols all
+  - set security zones security-zone ISP01-MON interfaces irb.10 host-inbound-traffic system-services ping
+  - set security zones security-zone ISP02-TRANSIT
+
+prefix_list_trusted_cidrs_lines:
+  - set policy-options prefix-list trusted-cidrs ##add_trusted_LAN_cidrs
+  - set policy-options prefix-list trusted-cidrs ##add_trusted_LAN_cidrs
+  - set policy-options prefix-list trusted-cidrs ##add_trusted_LAN_cidrs
+
+filter_mgmt_lines:
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SSH from source-prefix-list trusted-cidrs
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SSH from protocol tcp
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SSH from port ssh
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SSH then accept
+  - set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS from source-prefix-list trusted-cidrs
+  - set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS from protocol tcp
+  - set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS from port https
+  - set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS then accept
+  - set firewall family inet filter FILTER-MGMT term ALLOW-PING from protocol icmp
+  - set firewall family inet filter FILTER-MGMT term ALLOW-PING then accept
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SNMP from source-prefix-list trusted-cidrs
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SNMP from protocol udp
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SNMP from port snmp
+  - set firewall family inet filter FILTER-MGMT term ALLOW-SNMP then accept
+  - set firewall family inet filter FILTER-MGMT term DENY-ALL then syslog
+  - set firewall family inet filter FILTER-MGMT term DENY-ALL then discard
+
+enable_rpm_lines:
+  - set services rpm
+l2_learning_lines:
+  - set protocols l2-learning global-mode switching
+
+snmp_enabled: false
+snmp_lines: []
+snmp_community: esenempee
+snmp_test_enabled: true          # flip to false to skip the post-commit test
+snmp_sysname_oid: 1.3.6.1.2.1.1.5.0
