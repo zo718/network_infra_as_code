@@ -55,32 +55,16 @@ hq_nyc-svr03a.hq_nyc_internal_domain.com
 hq_nyc-svr03b.hq_nyc_internal_domain.com
 
 [hq_nyc_idf_stacks]
-hq_nyc-sw01a.hq_nyc_internal_domain.com
-hq_nyc-sw01b.hq_nyc_internal_domain.com
-hq_nyc-svr03c.hq_nyc_internal_domain.com
-hq_nyc-svr03f.hq_nyc_internal_domain.com
-hq_nyc-sw02a.hq_nyc_internal_domain.com
-hq_nyc-sw02hd.hq_nyc_internal_domain.com
-hq_nyc-sw03a.hq_nyc_internal_domain.com
-hq_nyc-sw03b.hq_nyc_internal_domain.com
-hq_nyc-sw03c.hq_nyc_internal_domain.com
-hq_nyc-sw04a.hq_nyc_internal_domain.com
-hq_nyc-sw04b.hq_nyc_internal_domain.com
-hq_nyc-sw05a.hq_nyc_internal_domain.com
-hq_nyc-sw05b.hq_nyc_internal_domain.com
-hq_nyc-sw05Pa.hq_nyc_internal_domain.com
-hq_nyc-sw06a.hq_nyc_internal_domain.com
-hq_nyc-sw06Pa.hq_nyc_internal_domain.com
-hq_nyc-sw07a.hq_nyc_internal_domain.com
-hq_nyc-sw07b.hq_nyc_internal_domain.com
-hq_nyc-sw08a.hq_nyc_internal_domain.com
-hq_nyc-sw08b.hq_nyc_internal_domain.com
+hq_nyc-sw01.hq_nyc_internal_domain.com
+hq_nyc-sw02.hq_nyc_internal_domain.com
+hq_nyc-sw03.hq_nyc_internal_domain.com
+hq_nyc-sw04.hq_nyc_internal_domain.com
+hq_nyc-sw05.hq_nyc_internal_domain.com
 
 [eur_bcn_idf_stacks]
-eur_bcn-sw05a.hq_nyc_internal_domain.com
-eur_bcn-sw05b.hq_nyc_internal_domain.com
-eur_bcn-sw05c.hq_nyc_internal_domain.com
-eur_bcn-sw05mgmt.hq_nyc_internal_domain.com
+eur_bcn-sw01.hq_nyc_internal_domain.com
+eur_bcn-sw02.hq_nyc_internal_domain.com
+eur_bcn-sw03.hq_nyc_internal_domain.com
 
 [hq_nyc_pdus_ups]
 pdu-03-r1b.hq_nyc_internal_domain.com
