@@ -53,8 +53,8 @@ static_routes:
     next_hop: [##add_the_isp01_default_gateway_IP]
     qualified_next_hop:
       - { forwarding_router_address: ##add_the_isp02_default_gateway_IP, preference: 20 }
-  - destination: 10.10.0.0/16
-    next_hop: [10.10.0.1]
+  - destination: 10.10.10.0/16
+    next_hop: [10.10.10.1]
 
 security_zones_lines:
   - set security policies
