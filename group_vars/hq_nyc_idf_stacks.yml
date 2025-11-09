@@ -1,4 +1,4 @@
- #This vars file is used for the IDF stacks. we add items that will remain the same for the most part and will require to go on all the switche stacks.
+ #This vars file defines shared configurations for IDF switch-stacks values that remain consistent across all switches.
 
 location: hq_nyc
 ansible_connection: ansible.netcommon.network_cli
