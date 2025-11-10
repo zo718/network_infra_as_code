@@ -1,0 +1,32 @@
+---
+
+hostname: hq_nyc-border01
+mgmt_ip: 10.10.10.3
+
+interface_descriptions:
+  - { name: ge-0/0/5,  description: "LAN-MGMT" }
+  - { name: xe-0/0/16, description: "ISP01 to Firewall" }
+  - { name: xe-0/0/17, description: "ISP02 to Firewall" }
+  - { name: xe-0/0/18, description: "ISP01 Circuit ID #" }
+  - { name: xe-0/0/19, description: "ISP02 Circuit ID #" }
+
+  l3_interfaces:
+  - name: ge-0/0/5.0
+    description: LAN-MGMT
+    ipv4: [ { address: 10.10.10.3/24 } ]
+  - name: irb.10
+    description: ISP01-IRB
+    ipv4: [ { address: 1.1.1.5/29 } ]
+  - name: irb.20
+    description: ISP02-IRB
+    ipv4: [ { address: 2.2.2.5/29 } ]
+  - { name: lo0.0,  ipv4: [] }
+
+  https_port: 4443
+
+snmp_enabled: true
+snmp_lines:
+  - set snmp location "Location_name"
+  - set snmp contact "contact Email"
+  - set snmp community "community name" authorization read-only
+  - set snmp community "community name" clients ip_for snmp_collector"
