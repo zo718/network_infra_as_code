@@ -7,7 +7,7 @@ uplinks:
     name: core01
     vlan: 'trunk'
 
-  - port: TenGigabitEthernet3/1/1
+  - port: TenGigabitEthernet1/1/4
     name: core01
     vlan: 'trunk'
 
