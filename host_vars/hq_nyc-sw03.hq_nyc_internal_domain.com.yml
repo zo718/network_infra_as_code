@@ -9,7 +9,7 @@ uplinks:
     vlan: 'trunk'
 
   - port: TenGigabitEthernet3/1/1
-    name: core01
+    name: core02
     vlan: 'trunk'
 
 interfaces:
