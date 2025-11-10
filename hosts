@@ -11,10 +11,6 @@ hq_nyc-border02.hq_nyc_hq_nyc_internal_domain.com
 hq_nyc-core01.hq_nyc_internal_domain.com
 hq_nyc-core02.hq_nyc_internal_domain.com
 
-[hq_nyc_mdf_9ks]
-hq_nyc-svr9k01.hq_nyc_internal_domain.com
-hq_nyc-svr9k02.hq_nyc_internal_domain.com
-
 [hq_nyc_idf_stacks]
 hq_nyc-sw01.hq_nyc_internal_domain.com
 hq_nyc-sw02.hq_nyc_internal_domain.com
