@@ -38,5 +38,5 @@ l2_vlans:
     id: 30
   - name: "AV"
     id: 40
-  - name: "Guest"
+  - name: "Guest_Wired"
     id: 200
