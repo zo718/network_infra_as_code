@@ -1,4 +1,6 @@
 #This file defines variables for HQ_NYC border switches, which are usually Juniper routers running JUNOS. 
+#version 1.5 - Written by Alfredo Jo ® - 2024
+
 
 ansible_connection: ansible.netcommon.netconf
 ansible_network_os: junipernetworks.junos.junos
