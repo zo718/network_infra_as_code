@@ -27,6 +27,8 @@ ntp:
   - "time.google.com"
   - "time1.google.com"
 
+#In the host_vars files, VLAN 1 is used as a sinkhole VLAN with no network connectivity.
+
 l2_vlans:
   - name: "Internal"
     id: 10
