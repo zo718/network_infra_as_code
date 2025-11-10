@@ -1,0 +1,81 @@
+#This vars file defines shared configurations for the core 9K switches values that remain consistent. 
+#version 1.0 - Written by Alfredo Jo ® - 2024
+
+ansible_network_os: cisco.nxos.nxos
+ansible_connection: ansible.netcommon.network_cli
+napalm_platform: nxos
+location: hq_nyc
+ansible_user: !vault |   ###USE YOUR VAULT GENERATED ENCRYPTION. THIS IS AN EXAMPLE ONLY.
+          $ANSIBLE_VAULT;1.1;AES256
+          3830373937366234300a313837633230383634363232666432346338336437306636396536323962
+          3530303833343932336239326237363936363039663761330a653939303736356432343066653664
+          3530303833343932336239326237363936363039663761330a653939303736356432343066653664
+          3830373937366234300a313837633230383634363232666432346338336437306636396536323962
+          6666
+ansible_password: !vault |  ###USE YOUR VAULT GENERATED ENCRYPTION. THIS IS AN EXAMPLE ONLY.
+          $ANSIBLE_VAULT;1.1;AES256
+          63353139323661663762616166333231396631306133386237333261666330653134346366366265
+          64161645165482098908798798798379879871987981798798798798798729873987987312312324
+          34383465613065383037306266333334623565636534383662653332663462313764353831646431
+          62741852963789456123366554126587896320258741236987897410639859238962556895896563
+          30343335386634363261343534666533396361646238386337666435376433313264
+
+features:
+  - "tacacs+"
+  - "udld"
+  - "interface-vlan"
+  - "lacp"
+  - "dhcp"
+  - "vpc"
+  - "lldp"
+  - "sflow"
+
+l2_vlans:
+  - name: "Internal"
+    id: 10
+  - name: "MGMT"
+    id: 20
+  - name: "Security_Systems_&_Cameras"
+    id: 30
+  - name: "AV"
+    id: 40
+  - name: "Guest"
+    id: 200
+
+allowed_vpcs_id: [ 1, 2, 3, 4, 5]
+
+port_channels:
+  - name: port-channel 1
+    vpc: 1
+    desc: hq_nyc-sw01
+    speed: 10000
+    if_extra: spanning-tree port type edge
+
+  - name: port-channel 2
+    vpc: 2
+    desc: hq_nyc-sw02
+    speed: 10000
+    if_extra: spanning-tree port type edge
+
+  - name: port-channel 3
+    vpc: 3
+    desc: hq_nyc-sw03 
+    speed: 10000
+    if_extra: spanning-tree port type edge
+
+  - name: port-channel 4
+    vpc: 4
+    desc: hq_nyc-sw04
+    speed: 10000
+    if_extra: spanning-tree port type edge
+
+  - name: port-channel 5
+    vpc: 5
+    desc: hq_nyc-sw04
+    speed: 10000
+    if_extra: spanning-tree port type edge
+
+    #  - name: port-channel 4096
+    #    vpc: peer-link
+    #    desc: Intercore-link
+    #    if_extra: spanning-tree port type network
