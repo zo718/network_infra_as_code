@@ -22,11 +22,5 @@ hq_nyc-sw03.hq_nyc_internal_domain.com
 hq_nyc-sw04.hq_nyc_internal_domain.com
 hq_nyc-sw05.hq_nyc_internal_domain.com
 
-[hq_nyc_pdus_ups]
-pdu-03-r1b.hq_nyc_internal_domain.com
-pdu-03-r1a.hq_nyc_internal_domain.com
-ups-03-r1a.hq_nyc_internal_domain.com
-ups-03-r1b.hq_nyc_internal_domain.com
-
 [local]
 control ansible_connection=local
