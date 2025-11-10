@@ -1,3 +1,5 @@
+#version 1.2 - Written by Alfredo Jo ® - 2024
+
 [hq_nyc_all:children]
 hq_nyc_servers
 hq_nyc_network
