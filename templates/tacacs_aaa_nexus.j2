@@ -1,0 +1,14 @@
+#version 1.0 - Written by Alfredo Jo ® - 2024
+
+tacacs-server host 10.10.10.100 key 7 "secret_key"
+tacacs-server host 110.10.10.200 key 7 "secret_key"
+ip tacacs source-interface mgmt 0
+!
+aaa group server tacacs+ GROUP_NAME
+ server 10.10.10.100
+ server 10.10.10.200
+!
+aaa authentication login default group GROUP_NAME
+aaa accounting default group GROUP_NAME
+aaa authentication login error-enable
+!
