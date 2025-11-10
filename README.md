@@ -31,6 +31,7 @@ The goal of this repository is to:
 ---
 
 ## 🗂️ Repository Structure
+```
 ├── group_vars/
 │   ├── hq_nyc_borders.yml                                        # Juniper border switch variables
 │   ├── hq_nyc_cores_9k.yml                                        # Cisco 9K cores switch variables
@@ -44,7 +45,6 @@ The goal of this repository is to:
 │   ├── hq_nyc-sw03.hq_nyc_internal_domain.com.yml                #HQ Third Floor IDF Cisco Stacks
 │   ├── hq_nyc-sw04.hq_nyc_internal_domain.com.yml                #HQ Fourth Floor IDF Cisco Stacks
 │   ├── hq_nyc-sw05.hq_nyc_internal_domain.com.yml                #HQ Fifth Floor IDF Cisco Stacks
-
 │
 ├── playbooks/
 │   ├── deploy_config.yml      # Deploy configs to devices
@@ -66,8 +66,9 @@ The goal of this repository is to:
 ├── requirements.txt
 ├── README.md
 └── LICENSE
-
+```
 ---
+
 
 ## 🧠 How It Works
 
