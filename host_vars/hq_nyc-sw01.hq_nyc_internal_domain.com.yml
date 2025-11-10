@@ -1,0 +1,205 @@
+--- 
+# This vars file corresponds to the HQ_NYC IDF stack (hq_nyc-sw01.hq_nyc_internal_domain.com.yml), located on the first floor of the HQ building.
+#version 2.1 - Written by Alfredo Jo ® - 2024
+
+uplinks:
+  - port: TenGigabitEthernet1/1/1
+    name: core01
+    vlan: 'trunk'
+
+  - port: TenGigabitEthernet3/1/1
+    name: core01
+    vlan: 'trunk'
+
+interfaces:
+  - port: GigabitEthernet1/0/1
+    name: INT-01
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/2
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/3
+    name: AV-01
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/4
+    name: SEC-CAM-01
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/5
+    name: INT-02
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/6
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/7
+    name: SEC-CAM-02
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/8
+    name: AV-02
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/9
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/10
+    name: INT-03
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/11
+    name: SEC-CAM-03
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/12
+    name: AV-03
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/13
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/14
+    name: INT-04
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/15
+    name: AV-04
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/16
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/17
+    name: SEC-CAM-04
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/18
+    name: INT-05
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/19
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/20
+    name: AV-05
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/21
+    name: SEC-CAM-05
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/22
+    name: INT-06
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/23
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/24
+    name: SEC-CAM-06
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/25
+    name: AV-06
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/26
+    name: INT-07
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/27
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/28
+    name: AV-07
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/29
+    name: SEC-CAM-07
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/30
+    name: INT-08
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/31
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/32
+    name: SEC-CAM-08
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/33
+    name: AV-08
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/34
+    name: INT-09
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/35
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/36
+    name: SEC-CAM-09
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/37
+    name: INT-10
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/38
+    name: AV-09
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/39
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/40
+    name: SEC-CAM-10
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/41
+    name: INT-11
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/42
+    name: AV-10
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/43
+    name: SEC-CAM-11
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/44
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/45
+    name: INT-12
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/46
+    name: SEC-CAM-12
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/47
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/48
+    name: INT-13
+    vlan: '10'
