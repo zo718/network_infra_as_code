@@ -1,27 +1,7 @@
 #version 1.2 - Written by Alfredo Jo ® - 2024
 
-[hq_nyc_all:children]
-hq_nyc_servers
-hq_nyc_network
-
-[hq_nyc_servers:children]
-hq_nyc_ansible
-hq_nyc_dhcp
-
-[dhcp_servers:children]
-hq_nyc_dhcp
-
-[hq_nyc_dhcp]
-hq_nyc-dhcp01 ansible_host=10.10.10.252 location="hq_nyc_dhcp" ha_role="primary" ansible_ssh_private_key_file=/home/ansible/.ssh/ansible_ssh_key
-hq_nyc-dhcp02 ansible_host=10.10.10.253 location="hq_nyc_dhcp" ha_role="standby" ansible_ssh_private_key_file=/home/ansible/.ssh/ansible_ssh_key
-
 [hq_nyc_ansible]
 ansible ansible_host=10.10.10.100
-
-[hq_nyc_network:children]
-hq_nyc_borders
-hq_nyc_cores
-hq_nyc_mdf_sw
 
 [hq_nyc_borders]
 hq_nyc-border01.hq_nyc_hq_nyc_internal_domain.com
@@ -31,9 +11,9 @@ hq_nyc-border02.hq_nyc_hq_nyc_internal_domain.com
 hq_nyc-core01.hq_nyc_internal_domain.com
 hq_nyc-core02.hq_nyc_internal_domain.com
 
-[hq_nyc_mdf_sw]
-hq_nyc-svr03a.hq_nyc_internal_domain.com
-hq_nyc-svr03b.hq_nyc_internal_domain.com
+[hq_nyc_mdf_9ks]
+hq_nyc-svr9k01.hq_nyc_internal_domain.com
+hq_nyc-svr9k02.hq_nyc_internal_domain.com
 
 [hq_nyc_idf_stacks]
 hq_nyc-sw01.hq_nyc_internal_domain.com
