@@ -1,0 +1,8 @@
+#version 1.0 - Written by Alfredo Jo ® - 2024
+
+set system authentication-order password
+set system authentication-order tacplus
+set system tacplus-server IP_address_primary secret {{ tacacs_secret }} 
+set system tacplus-server IP_address_secondary secret {{ tacacs_secret }} 
+set system login user remote uid 2000
+set system login user remote class super-user
