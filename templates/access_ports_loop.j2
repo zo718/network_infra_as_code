@@ -1,0 +1,19 @@
+{#this is a loop to configure access ports in the IDF stack switches#}
+{#version 1.5 - Written by Alfredo Jo ® - 2024#}
+
+{% for int in interfaces %}
+interface {{ int.port }}
+{% if int.name != "" %}
+ description {{ int.name }}
+{% else %}
+ description ""
+{% endif %}
+{% if int.vlan == "trunk" %}
+ switchport mode trunk
+{% elif int.vlan != "" %}
+ switchport mode access
+ switchport access vlan {{ int.vlan }}
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+{% endif %}
+{% endfor %}
