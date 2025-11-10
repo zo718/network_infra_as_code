@@ -1,0 +1,20 @@
+#version 1.1 - Written by Alfredo Jo ® - 2024
+
+aaa new-model
+!
+!
+aaa group server tacacs+ GROUP_NAME
+ server name ISE01
+ server name ISE02
+!
+aaa authentication login default local group GROUP_NAME
+aaa authorization exec default local group GROUP_NAME
+aaa accounting exec default start-stop group GROUP_NAME
+aaa accounting commands 15 default stop-only group GROUP_NAME
+!
+tacacs server ISE01
+ address ipv4 10.10.10.100
+ key 7 74Q1WHF8S52GFSD9562D
+tacacs server BRK-ISE02
+ address ipv4 10.10.10.100
+ key 7 74Q1WHF8S52GFSD9562D
