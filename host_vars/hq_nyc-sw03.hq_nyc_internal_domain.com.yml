@@ -1,6 +1,6 @@
 ---
 # This vars file corresponds to the HQ_NYC IDF stack (hq_nyc-sw03.hq_nyc_internal_domain.com.yml),
-# located on the Second floor of the HQ building.
+# located on the third floor of the HQ building.
 # version 2.2 - Written by Alfredo Jo ® - 2025
 
 uplinks:
@@ -8,7 +8,7 @@ uplinks:
     name: core01
     vlan: 'trunk'
 
-  - port: TenGigabitEthernet1/1/4
+  - port: TenGigabitEthernet3/1/1
     name: core01
     vlan: 'trunk'
 
