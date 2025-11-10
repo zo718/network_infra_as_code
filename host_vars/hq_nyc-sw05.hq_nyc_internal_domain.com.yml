@@ -1,0 +1,974 @@
+---
+# This vars file corresponds to the HQ_NYC IDF stack (hq_nyc-sw05.hq_nyc_internal_domain.com.yml),
+# located on the Second floor of the HQ building.
+# version 2.2 - Written by Alfredo Jo ® - 2025
+
+uplinks:
+  - port: TenGigabitEthernet1/1/1
+    name: core01
+    vlan: 'trunk'
+
+  - port: TenGigabitEthernet1/1/4
+    name: core01
+    vlan: 'trunk'
+
+interfaces:
+  - port: GigabitEthernet1/0/1
+    name: SEC-CAM-01
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/2
+    name: GUEST-01
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/3
+    name: AV-01
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/4
+    name: INT-01
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/5
+    name: INT-02
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/6
+    name: INT-03
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/7
+    name: SEC-CAM-02
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/8
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/9
+    name: GUEST-02
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/10
+    name: SEC-CAM-03
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/11
+    name: SEC-CAM-04
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/12
+    name: INT-04
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/13
+    name: SEC-CAM-05
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/14
+    name: SEC-CAM-06
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/15
+    name: GUEST-03
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/16
+    name: SEC-CAM-07
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/17
+    name: INT-05
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/18
+    name: GUEST-04
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/19
+    name: SEC-CAM-08
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/20
+    name: AV-02
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/21
+    name: GUEST-05
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/22
+    name: GUEST-06
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/23
+    name: GUEST-07
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/24
+    name: GUEST-08
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/25
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/26
+    name: GUEST-09
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/27
+    name: INT-06
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/28
+    name: GUEST-10
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/29
+    name: INT-07
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/30
+    name: GUEST-11
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/31
+    name: SEC-CAM-09
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/32
+    name: INT-08
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/33
+    name: AV-03
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/34
+    name: GUEST-12
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/35
+    name: GUEST-13
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/36
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet1/0/37
+    name: INT-09
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/38
+    name: GUEST-14
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/39
+    name: GUEST-15
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/40
+    name: GUEST-16
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/41
+    name: SEC-CAM-10
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/42
+    name: GUEST-17
+    vlan: '200'
+
+  - port: GigabitEthernet1/0/43
+    name: SEC-CAM-11
+    vlan: '30'
+
+  - port: GigabitEthernet1/0/44
+    name: AV-04
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/45
+    name: INT-10
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/46
+    name: AV-05
+    vlan: '40'
+
+  - port: GigabitEthernet1/0/47
+    name: INT-11
+    vlan: '10'
+
+  - port: GigabitEthernet1/0/48
+    name: INT-12
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/1
+    name: INT-13
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/2
+    name: GUEST-18
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/3
+    name: SEC-CAM-12
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/4
+    name: SEC-CAM-13
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/5
+    name: GUEST-19
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/6
+    name: GUEST-20
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/7
+    name: GUEST-21
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/8
+    name: INT-14
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/9
+    name: SEC-CAM-14
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/10
+    name: INT-15
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/11
+    name: GUEST-22
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/12
+    name: INT-16
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/13
+    name: GUEST-23
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/14
+    name: INT-17
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/15
+    name: GUEST-24
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/16
+    name: INT-18
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/17
+    name: GUEST-25
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/18
+    name: INT-19
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/19
+    name: GUEST-26
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/20
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet2/0/21
+    name: INT-20
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/22
+    name: GUEST-27
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/23
+    name: GUEST-28
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/24
+    name: SEC-CAM-15
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/25
+    name: INT-21
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/26
+    name: SEC-CAM-16
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/27
+    name: AV-06
+    vlan: '40'
+
+  - port: GigabitEthernet2/0/28
+    name: GUEST-29
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/29
+    name: GUEST-30
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/30
+    name: SEC-CAM-17
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/31
+    name: SEC-CAM-18
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/32
+    name: GUEST-31
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/33
+    name: GUEST-32
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/34
+    name: GUEST-33
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/35
+    name: GUEST-34
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/36
+    name: GUEST-35
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/37
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet2/0/38
+    name: INT-22
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/39
+    name: GUEST-36
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/40
+    name: INT-23
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/41
+    name: GUEST-37
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/42
+    name: GUEST-38
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/43
+    name: SEC-CAM-19
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/44
+    name: SEC-CAM-20
+    vlan: '30'
+
+  - port: GigabitEthernet2/0/45
+    name: GUEST-39
+    vlan: '200'
+
+  - port: GigabitEthernet2/0/46
+    name: INT-24
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/47
+    name: INT-25
+    vlan: '10'
+
+  - port: GigabitEthernet2/0/48
+    name: GUEST-40
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/1
+    name: SEC-CAM-21
+    vlan: '30'
+
+  - port: GigabitEthernet3/0/2
+    name: GUEST-41
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/3
+    name: GUEST-42
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/4
+    name: AV-07
+    vlan: '40'
+
+  - port: GigabitEthernet3/0/5
+    name: GUEST-43
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/6
+    name: AV-08
+    vlan: '40'
+
+  - port: GigabitEthernet3/0/7
+    name: INT-26
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/8
+    name: INT-27
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/9
+    name: GUEST-44
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/10
+    name: GUEST-45
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/11
+    name: GUEST-46
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/12
+    name: GUEST-47
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/13
+    name: INT-28
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/14
+    name: INT-29
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/15
+    name: AV-09
+    vlan: '40'
+
+  - port: GigabitEthernet3/0/16
+    name: GUEST-48
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/17
+    name: INT-30
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/18
+    name: INT-31
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/19
+    name: GUEST-49
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/20
+    name: GUEST-50
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/21
+    name: SEC-CAM-22
+    vlan: '30'
+
+  - port: GigabitEthernet3/0/22
+    name: SEC-CAM-23
+    vlan: '30'
+
+  - port: GigabitEthernet3/0/23
+    name: SEC-CAM-24
+    vlan: '30'
+
+  - port: GigabitEthernet3/0/24
+    name: GUEST-51
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/25
+    name: INT-32
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/26
+    name: SEC-CAM-25
+    vlan: '30'
+
+  - port: GigabitEthernet3/0/27
+    name: INT-33
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/28
+    name: INT-34
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/29
+    name: GUEST-52
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/30
+    name: SEC-CAM-26
+    vlan: '30'
+
+  - port: GigabitEthernet3/0/31
+    name: GUEST-53
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/32
+    name: INT-35
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/33
+    name: GUEST-54
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/34
+    name: GUEST-55
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/35
+    name: GUEST-56
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/36
+    name: GUEST-57
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/37
+    name: INT-36
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/38
+    name: AV-10
+    vlan: '40'
+
+  - port: GigabitEthernet3/0/39
+    name: GUEST-58
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/40
+    name: GUEST-59
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/41
+    name: GUEST-60
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/42
+    name: INT-37
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/43
+    name: INT-38
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/44
+    name: GUEST-61
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/45
+    name: GUEST-62
+    vlan: '200'
+
+  - port: GigabitEthernet3/0/46
+    name: AV-11
+    vlan: '40'
+
+  - port: GigabitEthernet3/0/47
+    name: INT-39
+    vlan: '10'
+
+  - port: GigabitEthernet3/0/48
+    name: GUEST-63
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/1
+    name: GUEST-64
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/2
+    name: INT-40
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/3
+    name: GUEST-65
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/4
+    name: GUEST-66
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/5
+    name: AV-12
+    vlan: '40'
+
+  - port: GigabitEthernet4/0/6
+    name: SEC-CAM-27
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/7
+    name: AV-13
+    vlan: '40'
+
+  - port: GigabitEthernet4/0/8
+    name: GUEST-67
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/9
+    name: SEC-CAM-28
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/10
+    name: INT-41
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/11
+    name: SEC-CAM-29
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/12
+    name: GUEST-68
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/13
+    name: INT-42
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/14
+    name: GUEST-69
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/15
+    name: GUEST-70
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/16
+    name: GUEST-71
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/17
+    name: SEC-CAM-30
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/18
+    name: SEC-CAM-31
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/19
+    name: INT-43
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/20
+    name: GUEST-72
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/21
+    name: AV-14
+    vlan: '40'
+
+  - port: GigabitEthernet4/0/22
+    name: GUEST-73
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/23
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet4/0/24
+    name: GUEST-74
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/25
+    name: GUEST-75
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/26
+    name: GUEST-76
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/27
+    name: GUEST-77
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/28
+    name: SEC-CAM-32
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/29
+    name: SEC-CAM-33
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/30
+    name: GUEST-78
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/31
+    name: GUEST-79
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/32
+    name: INT-44
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/33
+    name: INT-45
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/34
+    name: INT-46
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/35
+    name: GUEST-80
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/36
+    name: SEC-CAM-34
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/37
+    name: GUEST-81
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/38
+    name: SEC-CAM-35
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/39
+    name: GUEST-82
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/40
+    name: GUEST-83
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/41
+    name: SEC-CAM-36
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/42
+    name: INT-47
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/43
+    name: GUEST-84
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/44
+    name: INT-48
+    vlan: '10'
+
+  - port: GigabitEthernet4/0/45
+    name: SEC-CAM-37
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/46
+    name: GUEST-85
+    vlan: '200'
+
+  - port: GigabitEthernet4/0/47
+    name: SEC-CAM-38
+    vlan: '30'
+
+  - port: GigabitEthernet4/0/48
+    name: AV-15
+    vlan: '40'
+
+  - port: GigabitEthernet5/0/1
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet5/0/2
+    name: SEC-CAM-39
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/3
+    name: INT-49
+    vlan: '10'
+
+  - port: GigabitEthernet5/0/4
+    name: GUEST-86
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/5
+    name: GUEST-87
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/6
+    name: AV-16
+    vlan: '40'
+
+  - port: GigabitEthernet5/0/7
+    name: GUEST-88
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/8
+    name: GUEST-89
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/9
+    name: GUEST-90
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/10
+    name: SEC-CAM-40
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/11
+    name: GUEST-91
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/12
+    name: GUEST-92
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/13
+    name: INT-50
+    vlan: '10'
+
+  - port: GigabitEthernet5/0/14
+    name: INT-51
+    vlan: '10'
+
+  - port: GigabitEthernet5/0/15
+    name: none
+    vlan: '1'
+
+  - port: GigabitEthernet5/0/16
+    name: GUEST-93
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/17
+    name: INT-52
+    vlan: '10'
+
+  - port: GigabitEthernet5/0/18
+    name: INT-53
+    vlan: '10'
+
+  - port: GigabitEthernet5/0/19
+    name: AV-17
+    vlan: '40'
+
+  - port: GigabitEthernet5/0/20
+    name: SEC-CAM-41
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/21
+    name: GUEST-94
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/22
+    name: SEC-CAM-42
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/23
+    name: GUEST-95
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/24
+    name: INT-54
+    vlan: '10'
+
+  - port: GigabitEthernet5/0/25
+    name: GUEST-96
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/26
+    name: GUEST-97
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/27
+    name: GUEST-98
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/28
+    name: GUEST-99
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/29
+    name: SEC-CAM-43
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/30
+    name: GUEST-100
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/31
+    name: GUEST-101
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/32
+    name: GUEST-102
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/33
+    name: SEC-CAM-44
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/34
+    name: INT-55
+    vlan: '10'
+
+  - port: GigabitEthernet5/0/35
+    name: SEC-CAM-45
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/36
+    name: GUEST-103
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/37
+    name: GUEST-104
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/38
+    name: GUEST-105
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/39
+    name: GUEST-106
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/40
+    name: AV-18
+    vlan: '40'
+
+  - port: GigabitEthernet5/0/41
+    name: SEC-CAM-46
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/42
+    name: GUEST-107
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/43
+    name: SEC-CAM-47
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/44
+    name: AV-19
+    vlan: '40'
+
+  - port: GigabitEthernet5/0/45
+    name: SEC-CAM-48
+    vlan: '30'
+
+  - port: GigabitEthernet5/0/46
+    name: GUEST-108
+    vlan: '200'
+
+  - port: GigabitEthernet5/0/47
+    name: AV-20
+    vlan: '40'
+
+  - port: GigabitEthernet5/0/48
+    name: INT-56
+    vlan: '10'
