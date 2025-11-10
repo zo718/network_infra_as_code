@@ -1,4 +1,6 @@
  #This vars file defines shared configurations for IDF switch-stacks values that remain consistent across all switches.
+ #version 1.1 - Written by Alfredo Jo ® - 2024
+
 
 location: hq_nyc
 ansible_connection: ansible.netcommon.network_cli
