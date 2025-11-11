@@ -1,6 +1,6 @@
 # 🧠 Network Automation with Ansible for Cisco & Juniper by Zo718
 
-*** project is a work in progress — I’ll continue adding context and additional files as time allows.***
+***This project is a work in progress — I’ll continue adding context and additional files as time allows.***
 
 This repository provides a complete **Ansible-based automation framework** for managing and deploying Cisco IOS and Juniper Junos devices in a typical **enterprise or office network environment**.  
 It demonstrates how to use **host variables**, **group variables**, and **modular playbooks** to perform configuration, monitoring, and validation tasks efficiently and consistently.
