@@ -1,4 +1,5 @@
-# Network Automation with Ansible for Cisco & Juniper by Zo718
+# Network Automation with Ansible for Cisco & Juniper
+**Version 1.2 • Authored by Alfredo Jo ® • 2024**
 
 ***This project is a work in progress — I’ll continue adding context and additional files as time allows.***
 
