@@ -1,7 +1,7 @@
 # How to Prepare Cisco Devices for Ansible Automation  
 **Version 1.0 • Authored by Alfredo Jo ® • 2024**
 
-This guide explains how to configure Cisco switches and routers for seamless integration with Ansible. It includes preparation, setup, and configuration steps used in real-world enterprise environments.  
+This guide outlines the process I use to configure Cisco switches and routers for smooth integration with Ansible. These are the methods that have consistently worked for me over the years, covering preparation, setup, and configuration practices proven in real-world enterprise environments  
 
 ---
 
