@@ -149,7 +149,7 @@ switch#switch 1 priority 15
 switch#wr
 ```
 
-![Switch Priority Diagram](/imgs/preparing_cisco_devices_for_ansible/switch_priority_diagram.png)
+![Switch Priority Diagram](/img/preparing_cisco_devices_for_ansible/switch_priority_diagram.png)
 
 *Repeat the software upgrade and priority configuration steps on all switches in the stack.*
 
