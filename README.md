@@ -50,25 +50,17 @@ The goal of this repository is to:
 │   ├── hq_nyc-sw05.hq_nyc_internal_domain.com.yml                #HQ Fifth Floor IDF Cisco Stacks
 │
 ├── playbooks/
-│   ├── deploy_config.yml      # Deploy configs to devices
-│   ├── validate_config.yml    # Validate configs against templates
-│   ├── backup_config.yml      # Backup device configurations
-│   └── junos_aaa.j2           # JunOS Tacacs/AAA configuration 
-│   └── tacacs_aaa_config.j2   # Cisco IOS Tacacs/AAA configuration
-│   └── tacacs_aaa_nexus.j2    # Cisco Nexus Tacacs/AAA configuration
-│   └── ping_test.yml          # Simple reachability test
+│   ├── cisco_stacks_setup.yml         # Deploy configs to cisco IDF stacks
+│   ├── get_cisco_stacks_serials.yml   # Gathers all the Cisco stacks serial numbers and display them on screen.
 │
 ├── templates/
 │   ├── access_ports_loop.j2         # Cisco IOS access ports set up loop
 │   └── cisco_login_banner.j2        # Example login banner template
 │
-├── inventory/
-│   └── hosts   # Define devices and groups
-│
-├── ansible.cfg
-├── requirements.txt
-├── README.md
-└── LICENSE
+├── support_files
+├── hosts         #Defines devices and groups
+├── ansible.cfg   #Defines the settings and tweaks for our anisble server
+├── README.md     #Detailed documention about this repository
 ```
 ---
 
@@ -84,5 +76,5 @@ The goal of this repository is to:
 
 3. **Run the appropriate playbook** depending on the task:
    ```bash
-   ansible-playbook -i inventory/office_inventory.yml playbooks/deploy_config.yml
+   ansible-playbook playbooks/get_cisco_stacks_serial.yml -e var_host=hq_nyc-sw01.hq_nyc_internal_domain.com.yml
    
