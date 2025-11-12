@@ -1,4 +1,4 @@
-# 🧠 Network Automation with Ansible for Cisco & Juniper by Zo718
+# Network Automation with Ansible for Cisco & Juniper by Zo718
 
 ***This project is a work in progress — I’ll continue adding context and additional files as time allows.***
 
@@ -7,7 +7,7 @@ It demonstrates how to use **host variables**, **group variables**, and **modula
 
 ---
 
-## 🚀 Overview
+## Overview
 
 Modern network operations rely on automation for consistency, scalability, and efficiency.  
 This project showcases a **real-world implementation** of network automation using **Ansible** — a lightweight, agentless automation platform.
@@ -19,7 +19,7 @@ The goal of this repository is to:
 
 ---
 
-## 🧩 Features
+## Features
 
 - ✅ **Multi-Vendor Support:** Cisco IOS (Catalyst, ISR, Meraki) and Juniper (Junos)
 - ⚙️ **Dynamic Host & Group Variables:** Organized under `host_vars/` and `group_vars/`
@@ -32,7 +32,7 @@ The goal of this repository is to:
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 ```
 ├── group_vars/
 │   ├── hq_nyc_borders.yml                                        # Juniper border switch variables
@@ -72,7 +72,7 @@ The goal of this repository is to:
 ---
 
 
-## 🧠 How It Works
+## How It Works
 
 1. **Define your network inventory** under `hosts` file..  
    Devices are grouped by role or location (e.g., border, IDF, branch).
