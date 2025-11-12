@@ -1,0 +1,261 @@
+--- 
+#This playbook automates the baseline configuration for Cisco IDF switch stacks.
+#version 1.2 - Written by Alfredo Jo ® - 2024
+
+
+ - name: "Stacks Base configs"
+   hosts: "{{ var_host | default('empty_group')  }}"
+   connection: ansible.netcommon.network_cli
+   gather_facts: false
+
+   tasks:
+     - name: "brk dns servers config"
+       cisco.ios.ios_system:
+         name_servers:
+         - 8.8.8.8
+         - 8.8.4.4
+       tags:
+       - dns
+
+     - name: "Essential commands not in modules config"
+       cisco.ios.ios_config:
+         lines:
+           - service timestamps debug datetime msec localtime show-timezone
+           - service timestamps log datetime msec localtime show-timezone
+           - service password-encryption
+           - login on-failure log
+           - no ip http server
+           - no ip http secure-server
+           - no ip http authentication local
+           - login on-success log
+           - vtp mode transparent
+           - no logging console
+           - spanning-tree mode rapid-pvst
+           - spanning-tree extend system-id
+           - privilege exec all level 7 show running-config
+           - file privilege 7
+           - privilege configure all level 7 logging
+       tags:
+       - essential_commands
+
+     - name: "local automation user config"
+       cisco.ios.ios_user:
+         name: ansible
+         hashed_password:
+           type: 5
+           value: hashed_key_here
+         privilege: 15
+         state: present
+       tags:
+       - users
+
+     - name: "Add a new local user rootforce"
+       cisco.ios.ios_user:
+         name: netadmin
+         hashed_password:
+           type: 5
+           value: hashed_key_here
+         privilege: 15
+         state: present
+       no_log: true
+       tags:
+       - users
+
+     - name: Include Users File
+       ansible.builtin.include_vars: ../group_vars/cisco_local_users.yml
+     - name: User exists with hashed password
+       cisco.ios.ios_user:
+         name: "{{ item['name'] }}"
+         hashed_password:
+           type: 5
+           value: "{{ item['crypt'] }}"
+         privilege: "{{ item['privilege'] }}"
+         state: present
+       loop: "{{ users }}"
+     - name: Remove users when required
+       cisco.ios.ios_user:
+         name: "{{ item['name'] }}"
+         state: absent
+       loop: "{{ remove }}"
+
+     - name: "Login Banner config"
+       cisco.ios.ios_banner:
+         banner: login
+         state: present
+         text: |
+           " {{ lookup('file', 'Templates/login_banner.j2') }}"
+       tags:
+       - banner
+
+     - name: "snmp_v2 config"
+       cisco.ios.ios_snmp_server:
+         config:
+           communities:
+             - name: public
+               ro: true
+           contact: email_here
+       tags:
+       - snmp
+
+         #- name: "snmp_v3 config"
+         #  cisco.ios.ios_snmp_server:
+         #    config:
+         #      groups:
+         #        - group: techgroup
+         #          version: v3
+         #          version_option: priv
+         #            users:
+         #              - group: techgroup
+         #                username: admin
+         #                version: v3
+         #            authentication:
+         #              - algorithm: md5
+         #                password: Password_here
+         #            encryption:
+         #              - priv: aes
+         #                priv_option: 256
+         #                password: Password_here
+         #  state: merged
+         #  tags:
+         #  - snmp
+
+     - name: "ntp servers config"
+       cisco.ios.ios_ntp_global:
+         config:
+           servers:
+             - server: "{{ item }}"
+               version: 2
+       with_items: "{{ ntp }}"
+       tags:
+       - ntp
+
+     - name: "Timezone hq_nyc"
+       cisco.ios.ios_config:
+         lines:
+           - clock timezone EST -5
+           - clock summer-time EDT recurring 2 Sun Mar 2:00 1 Sun Nov 2:00
+       when: location == "hq_nyc"
+       tags:
+       - timezone
+
+     - name: "Timezone eur_bcn"
+       cisco.ios.ios_config:
+         lines:
+           - clock timezone GMT 0
+           - clock summer-time IST recurring last Sun Mar 1:00 last Sun Oct 2:00
+       when: location == "eur_bcn"
+       tags:
+       - timezone
+
+     - name: "L2 vlans in a loop config"
+       cisco.ios.ios_vlans:
+         config:
+         - name: "{{ vlan.name }}"
+           vlan_id: "{{ vlan.id }}"
+       loop: "{{ l2_vlans }}"
+       loop_control:
+         loop_var: vlan
+       tags:
+       - vlans
+
+     - name: "This one takes a long time. Access interfaces config in a loop"
+       cisco.ios.ios_config:
+         lines:
+           - description {{ item.name }}
+           - switchport mode access
+           - switchport access vlan {{ item.vlan }}
+           - spanning-tree portfast
+           - spanning-tree bpduguard enable
+         parents: interface {{ item.port }}
+       with_items:
+         - "{{ interfaces }}"
+       when: item.vlan != "trunk"
+       tags:
+       - ports
+
+     - name: "This one takes a long time. Trunk interfaces config in a loop"
+       cisco.ios.ios_config:
+         lines:
+           - description {{ item.name }}
+           - no switchport mode access
+           - no switchport access vlan
+           - no spanning-tree portfast
+           - no spanning-tree bpduguard enable
+           - switchport mode trunk
+         parents: interface {{ item.port }}
+       with_items:
+         - "{{ interfaces }}"
+       when: item.vlan == 'trunk'
+       tags:
+       - ports
+
+     - name: "logging config"
+       cisco.ios.ios_logging_global:
+         config:
+           buffered:
+             severity: informational
+             size: 8192
+           console:
+             severity: debugging
+           monitor:
+             severity: debugging
+           history:
+             severity: informational
+           hosts:
+             - hostname: IP or FQDN
+               transport:
+                 udp:
+                   port: 514
+       tags:
+       - logs
+
+     - name: "vty line 0 config"
+       cisco.ios.ios_config:
+         parents: "line con 0"
+         lines:
+           - "logging synchronous"
+       tags:
+       - vty
+
+     - name: "vty lines 0 4 config"
+       cisco.ios.ios_config:
+         parents: "line vty 0 30"
+         lines:
+           - "exec-timeout 30 0"
+           - "logging synchronous"
+           - "transport input ssh"
+           - "password 7 password_here"
+       tags:
+       - vty
+       
+   post_tasks:
+     - name: "Copy run start when modified"
+       cisco.ios.ios_config:
+         save_when: modified
+       register: config
+       tags:
+         - always
+         - save_config
+
+     - name: "Confirm config is saved"
+       debug:
+         var: config
+       tags:
+         - always
+         - save_config
+
+     - name: "Show configuration changes"
+     debug:
+       msg: |
+         === CONFIGURATION CHANGES ===
+         Changed: {{ config.changed }}
+         {% if config.diff is defined %}
+         Diff Output:
+         {{ config.diff }}
+         {% else %}
+         No diff data available.
+         {% endif %}
+     when: config.changed | bool
+     tags:
+       - always
+       - save_config
