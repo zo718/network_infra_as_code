@@ -9,7 +9,7 @@
    gather_facts: false
 
    tasks:
-     - name: "brk dns servers config"
+     - name: "dns servers config"
        cisco.ios.ios_system:
          name_servers:
          - 8.8.8.8
