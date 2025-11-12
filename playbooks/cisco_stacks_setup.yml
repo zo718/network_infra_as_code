@@ -49,7 +49,7 @@
        tags:
        - users
 
-     - name: "Add a new local user rootforce"
+     - name: "Add a new local user netadmin"
        cisco.ios.ios_user:
          name: netadmin
          hashed_password:
