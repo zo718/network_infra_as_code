@@ -1,0 +1,26 @@
+---
+#This file is used to add local users, privilege levels, and secret keys to any Cisco IOS switch or router.
+#version 1.2 - Written by Alfredo Jo ® - 2024
+
+users:
+  - name: SuperAdmin01
+    privilege: 15
+    crypt: crypt_key_here
+    state: present
+  - name: SuperAdmin02
+    privilege: 15
+    crypt: crypt_key_here
+    state: present
+  - name: SuperAdmin03
+    privilege: 15
+    crypt: crypt_key_here
+    state: present
+  - name: network_admin01  
+    privilege: 10
+    crypt: crypt_key_here
+    state: present
+
+
+remove:
+  - name: network_admin02
+    state: absent
