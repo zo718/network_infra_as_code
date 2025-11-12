@@ -1,0 +1,19 @@
+---
+#This playbook gathers and parses facts from Cisco IOS switches, then extracts and displays their serial numbers.
+# version 1.2 - Written by Alfredo Jo ® - 2024
+
+
+ - name: "Parse facts then loops"
+   hosts: "{{ var_host | default('empty_group')  }}"
+   gather_facts: true
+   connection: ansible.netcommon.network_cli
+
+   tasks:
+     - name: "gather stack serial"
+       debug:
+         msg: "{{ ansible_facts.net_stacked_serialnums }}"
+
+     - name: "loop any info you want"
+       debug:
+         msg: "{{ ansible_facts.net_hostname }}  many serials {{ item }} for switches"
+       loop: "{{ ansible_facts.net_stacked_serialnums }}"
