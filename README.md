@@ -77,4 +77,13 @@ The goal of this repository is to:
 3. **Run the appropriate playbook** depending on the task:
    ```bash
    ansible-playbook playbooks/get_cisco_stacks_serial.yml -e var_host=hq_nyc-sw01.hq_nyc_internal_domain.com.yml
-   
+
+## ⚠️ Disclaimer
+
+Please make sure to thoroughly test this in a lab environment before using it in production.  
+It is important that you fully understand what each playbook and task is doing before running them against live devices.
+
+While I have tested these workflows extensively in my own environment, it is impossible to account for every network design, topology, or edge case.  
+I cannot be held responsible for any outages, misconfigurations, or damage caused by the use of this code.
+
+Although these playbooks are written with idempotence and safety in mind, **always test and validate in your own environment first**.
