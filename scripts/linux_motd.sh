@@ -26,7 +26,13 @@ OS=$(. /etc/os-release && echo $PRETTY_NAME)
 KERNEL=$(uname -r)
 
 #install figlet
-command -v figlet >/dev/null || sudo dnf install epel-release figlet -y >/dev/null 2>&1
+if ! command -v figlet >/dev/null; then
+  if command -v apt >/dev/null; then
+    sudo apt update -y && sudo apt install figlet -y
+  elif command -v dnf >/dev/null; then
+    sudo dnf install epel-release figlet -y
+  fi
+fi
 
 #banner build
 
