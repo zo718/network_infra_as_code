@@ -1,0 +1,15 @@
+---
+# BRK border SRX shared vars
+ansible_connection: ansible.netcommon.netconf
+ansible_network_os: junipernetworks.junos.junos
+ansible_user: "__ANSIBLE_NET_USERNAME__"
+ansible_password: "__ANSIBLE_NET_PASSWORD__"
+ansible_port: 830
+ansible_command_timeout: 120
+
+srx_root_password_hash: "__SRX_ROOT_ENCRYPTED_PASSWORD_HASH__"
+local_user_1_password_hash: "__LOCAL_USER_1_ENCRYPTED_PASSWORD_HASH__"
+local_user_2_password_hash: "__LOCAL_USER_2_ENCRYPTED_PASSWORD_HASH__"
+
+vrrp_group_10_auth_key: "__VRRP_GROUP_10_AUTH_KEY__"
+vrrp_group_20_auth_key: "__VRRP_GROUP_20_AUTH_KEY__"

@@ -1,0 +1,15 @@
+---
+# Provision BRK SRX nodes from host_vars/group_vars
+- name: Provision BRK SRX nodes
+  hosts: "{{ var_host | default('brk_borders') }}"
+  gather_facts: false
+  collections:
+    - junipernetworks.junos
+
+  tasks:
+    - name: Merge SRX base configuration
+      junos_config:
+        lines: "{{ srx_set_commands }}"
+        update: merge
+        comment: "Initial SRX provisioning via Ansible"
+        commit: true

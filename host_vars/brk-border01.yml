@@ -1,0 +1,112 @@
+---
+ansible_host: 10.200.0.56
+
+srx_hostname: brk-border01
+srx_timezone: America/New_York
+
+local_user_1_name: "__LOCAL_USER_1_USERNAME__"
+local_user_1_uid: 1400
+local_user_2_name: "__LOCAL_USER_2_USERNAME__"
+local_user_2_uid: 2000
+
+dns_servers:
+  - 8.8.8.8
+  - 8.8.4.4
+
+srx_set_commands:
+  - "set system root-authentication encrypted-password {{ srx_root_password_hash }}"
+  - "set system host-name {{ srx_hostname }}"
+
+  - "set system login user {{ local_user_1_name }} uid {{ local_user_1_uid }}"
+  - "set system login user {{ local_user_1_name }} class super-user"
+  - "set system login user {{ local_user_1_name }} authentication encrypted-password {{ local_user_1_password_hash }}"
+
+  - "set system login user {{ local_user_2_name }} uid {{ local_user_2_uid }}"
+  - "set system login user {{ local_user_2_name }} class super-user"
+  - "set system login user {{ local_user_2_name }} authentication encrypted-password {{ local_user_2_password_hash }}"
+
+  - "set system services ssh root-login allow"
+  - "set system services ssh protocol-version v2"
+  - "set system services web-management https system-generated-certificate"
+  - "set system services web-management https interface fxp0.0"
+
+  - "set system name-server {{ dns_servers[0] }}"
+  - "set system name-server {{ dns_servers[1] }}"
+
+  - "set interfaces fxp0 description LAN-MGMT"
+  - "set interfaces fxp0 unit 0 description LAN-MGMT"
+  - "set interfaces fxp0 unit 0 family inet address 10.200.0.56/24"
+
+  - "set vlans vlan-zayo vlan-id 10"
+  - "set vlans vlan-zayo l3-interface irb.10"
+  - "set vlans vlan-hfn vlan-id 20"
+  - "set vlans vlan-hfn l3-interface irb.20"
+
+  - "set interfaces xe-0/0/18 description ZAYO-IDIA/419666//ZYO"
+  - "set interfaces xe-0/0/18 unit 0 description ZAYO-IDIA/419666//ZYO"
+  - "set interfaces xe-0/0/18 unit 0 family ethernet-switching vlan members vlan-zayo"
+
+  - "set interfaces xe-0/0/19 description HFN-10G"
+  - "set interfaces xe-0/0/19 unit 0 description HFN-10G"
+  - "set interfaces xe-0/0/19 unit 0 family ethernet-switching vlan members vlan-hfn"
+
+  - "set interfaces xe-0/0/16 description ZAYO to sonicwall01"
+  - "set interfaces xe-0/0/16 unit 0 description ZAYO to sonicwall01"
+  - "set interfaces xe-0/0/16 unit 0 family ethernet-switching vlan members vlan-zayo"
+  - "set interfaces xe-0/0/16 unit 0 family ethernet-switching interface-mode access"
+
+  - "set interfaces xe-0/0/17 description HFN to sonicwall01"
+  - "set interfaces xe-0/0/17 unit 0 description HFN to sonicwall01"
+  - "set interfaces xe-0/0/17 unit 0 family ethernet-switching vlan members vlan-hfn"
+
+  - "set interfaces irb unit 10 description ZAYO-IRB"
+  - "set interfaces irb unit 10 family inet address 173.46.67.75/29"
+  - "set interfaces irb unit 10 family inet address 173.46.67.75/29 vrrp-group 10 virtual-address 173.46.67.78"
+  - "set interfaces irb unit 10 family inet address 173.46.67.75/29 vrrp-group 10 priority 255"
+  - "set interfaces irb unit 10 family inet address 173.46.67.75/29 vrrp-group 10 preempt"
+  - "set interfaces irb unit 10 family inet address 173.46.67.75/29 vrrp-group 10 accept-data"
+  - "set interfaces irb unit 10 family inet address 173.46.67.75/29 vrrp-group 10 authentication-type md5"
+  - "set interfaces irb unit 10 family inet address 173.46.67.75/29 vrrp-group 10 authentication-key {{ vrrp_group_10_auth_key }}"
+
+  - "set interfaces irb unit 20 description HFN-IRB"
+  - "set interfaces irb unit 20 family inet address 104.218.142.25/29"
+  - "set interfaces irb unit 20 family inet address 104.218.142.25/29 vrrp-group 20 virtual-address 104.218.142.27"
+  - "set interfaces irb unit 20 family inet address 104.218.142.25/29 vrrp-group 20 priority 253"
+  - "set interfaces irb unit 20 family inet address 104.218.142.25/29 vrrp-group 20 preempt"
+  - "set interfaces irb unit 20 family inet address 104.218.142.25/29 vrrp-group 20 accept-data"
+  - "set interfaces irb unit 20 family inet address 104.218.142.25/29 vrrp-group 20 authentication-type md5"
+  - "set interfaces irb unit 20 family inet address 104.218.142.25/29 vrrp-group 20 authentication-key {{ vrrp_group_20_auth_key }}"
+
+  - "set routing-options static route 0.0.0.0/0 next-hop 10.200.0.1"
+  - "set routing-options static route 0.0.0.0/0 next-hop 173.46.67.73"
+  - "set routing-options static route 0.0.0.0/0 next-hop 104.218.142.25 preference 200"
+  - "set routing-options static route 10.0.0.0/8 next-hop 10.200.0.1"
+
+  - "set policy-options prefix-list trusted-ssh 10.200.1.56/32"
+  - "set policy-options prefix-list trusted-ssh 10.200.1.57/32"
+  - "set policy-options prefix-list trusted-ssh 10.240.0.0/12"
+  - "set policy-options prefix-list trusted-ssh 38.106.64.0/24"
+  - "set policy-options prefix-list trusted-ssh 34.30.110.86/32"
+  - "set policy-options prefix-list trusted-ssh 34.31.108.210/32"
+  - "set policy-options prefix-list trusted-ssh 104.218.142.24/29"
+  - "set policy-options prefix-list trusted-ssh 192.147.0.0/23"
+  - "set policy-options prefix-list trusted-ssh 207.224.126.188/32"
+  - "set policy-options prefix-list trusted-ssh 209.50.158.0/23"
+
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-SSH from source-prefix-list trusted-ssh"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-SSH from protocol tcp"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-SSH from port ssh"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-SSH then accept"
+  - "set firewall family inet filter FILTER-MGMT term allow-management from source-prefix-list trusted-ssh"
+  - "set firewall family inet filter FILTER-MGMT term allow-management then accept"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS from source-prefix-list trusted-ssh"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS from protocol tcp"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS from port https"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-HTTPS then accept"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-PING from protocol icmp"
+  - "set firewall family inet filter FILTER-MGMT term ALLOW-PING then accept"
+  - "set firewall family inet filter FILTER-MGMT term DENY-ALL then syslog"
+  - "set firewall family inet filter FILTER-MGMT term DENY-ALL then discard"
+
+  - "set system time-zone {{ srx_timezone }}"
+  - "set interfaces lo0 unit 0 family inet filter input FILTER-MGMT"
