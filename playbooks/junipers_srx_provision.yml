@@ -1,7 +1,7 @@
 ---
 # Provision BRK SRX nodes from host_vars/group_vars
 - name: Provision BRK SRX nodes
-  hosts: "{{ var_host | default('brk_borders') }}"
+  hosts: "{{ var_host | default('juniper_border') }}"
   gather_facts: false
   collections:
     - junipernetworks.junos
